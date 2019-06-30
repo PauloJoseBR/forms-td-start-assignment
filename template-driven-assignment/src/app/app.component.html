@@ -1,5 +1,66 @@
-<div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offeset-1 col-md-offset-2">
+      <form (ngSubmit)="onSubmit()" #f="ngForm">
+        <label for="nome">Nome</label>
+        <input type="text" 
+          id="nome"
+          class="form-control"
+          ngModel name="nome"
+          required
+          #nome="ngModel">
+          <span class="help-block" *ngIf="!nome.valid && nome.touched">
+            Please enter a name! <br/>
+          </span>
+        <label for="email">E-Mail</label>
+          <input type="text" 
+            id="email"
+            class="form-control"
+            ngModel name="email"
+            required
+            email
+            #email="ngModel">
+            <span class="help-block" *ngIf="!email.valid && email.touched">
+              Please enter a valid e-mail! <br/>
+            </span>
+        <label for="subscription">Subscrição</label>
+          <select 
+            id="subscription"
+            class="form-control"
+            ngModel name="subscription"
+            [ngModel]="defaultSubscription"
+            ngModel
+            required>
+            <option value="Basic">Básico</option>
+            <option value="Advanced">Avançado</option>
+            <option value="Pro">Profissional</option>
+          </select> 
 
+
+          <label for="password">Senha</label>
+          <input type="password"
+            id="password"
+            class="form-control"
+            ngModel name="password"
+            required
+            password
+            #password="ngModel">
+            <span class="help-block" *ngIf="!password.valid && password.touched">
+              Please enter a valid password <br/>
+            </span> 
+        <button class="btn btn-primary" type="submit" >Submit</button>
+        <div *ngIf="!f.valid && f.touched">
+          <h1> O forms está invalido</h1>
+        </div>
+
+
+      </form>
+
+
+
+
+    </div>
+  </div>
 </div>
 
 
